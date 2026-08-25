@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison de l'Oracle - Guidance Sentimentale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #5a4a6b;
+            background: linear-gradient(135deg, #faf7f2 0%, #f0e6f0 100%);
+        }
+
+        header {
+            background: linear-gradient(135deg, #d4a5d4 0%, #e8c5d8 100%);
+            padding: 3rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #d4a5d4;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #8b6b99;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #8b6b99;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .accueil {
+            background: linear-gradient(135deg, rgba(212, 165, 212, 0.1) 0%, rgba(232, 197, 216, 0.1) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .accueil-contenu {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .accueil p {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: #8b6b99;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #d4a5d4;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #8b6b99;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .service-card p {
+            color: #6b5a7b;
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #d4a5d4 0%, #c294c4 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(212, 165, 212, 0.4);
+        }
+
+        .form-section {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #8b6b99;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0c5e0;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #d4a5d4;
+            box-shadow: 0 0 8px rgba(212, 165, 212, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, #d4a5d4 0%, #c294c4 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(212, 165, 212, 0.4);
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #d4a5d4;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #6b5a7b;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #8b6b99;
+        }
+
+        footer {
+            background: #8b6b99;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4e8d4;
+            color: #4a7a4a;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>✨ Maison de l'Oracle ✨</h1>
+        <p class="tagline">Votre guidance sentimentale bienveillante</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">À Propos</a></li>
+            <li><a href="#contact">Rendez-vous</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Section Accueil -->
+        <section id="accueil" class="accueil">
+            <div class="accueil-contenu">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Bienvenue à la Maison de l'Oracle</h2>
+                <p>
+                    Découvrez la sagesse des cartes pour éclairer votre chemin du cœur. Que vous cherchiez à comprendre vos relations, à guérir les blessures émotionnelles ou à trouver votre véritable amour, je suis ici pour vous guider avec bienveillance et compassion.
+                </p>
+                <p>
+                    Chaque consultation est un moment d'écoute, de réflexion et de transformation. Ensemble, nous explorerons les messages de l'univers pour vous aider à prendre les décisions qui résonnent avec votre âme.
+                </p>
+                <a href="#contact" class="cta-button">Prendre un rendez-vous</a>
+            </div>
+        </section>
+
+        <!-- Section À Propos -->
+        <section id="about">
+            <div class="container">
+                <div class="about-section">
+                    <div class="about-text">
+                        <h2>Qui suis-je ?</h2>
+                        <p>
+                            Je suis une praticienne du tarot et des arts divinatoires, spécialisée dans la guidance sentimentale. Avec plusieurs années d'expérience, j'accompagne les cœurs en quête de clarté et de compréhension.
+                        </p>
+                        <p>
+                            Mon approche est fondée sur l'écoute active, l'intuition et la connexion authentique. Je crois que chacun possède la sagesse intérieure pour transformer sa vie, et j'aide à libérer cette connaissance cachée.
+                        </p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 5rem; opacity: 0.3;">🔮</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Services -->
+        <section id="services">
+            <div class="container">
+                <h2 class="section-title">Mes Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon">💕</div>
+                        <h3>Guidance Amoureuse</h3>
+                        <p>
+                            Comprenez les dynamiques de votre relation actuelle, découvrez ce que l'autre ressent vraiment, et trouvez les actions justes pour transformer votre amour.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="icon">🌟</div>
+                        <h3>Clarification Sentimentale</h3>
+                        <p>
+                            Vous hésitez entre deux cœurs ? Vous ne savez pas si cette relation a un avenir ? Recevez une guidance claire et intuitive pour vos dilemmes émotionnels.
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="icon">💫</div>
+                        <h3>Tirage Spécifique</h3>
+                        <p>
+                            Une question précise, une réponse nuancée. Je procède à un tirage sur-mesure pour explorer votre situation sentimentale en profondeur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Témoignages -->
+        <section style="background: linear-gradient(135deg, rgba(212, 165, 212, 0.05) 0%, rgba(232, 197, 216, 0.05) 100%);">
+            <div class="container">
+                <h2 class="section-title">Témoignages</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p>"Une consultation transformatrice. J'ai trouvé les réponses que je cherchais depuis longtemps."</p>
+                        <div class="testimonial-author">- Marie C.</div>
+                    </div>
+
+                    <div class="testimonial">
+                        <p>"L'écoute et la bienveillance de cette praticienne m'ont permis de voir ma relation autrement."</p>
+                        <div class="testimonial-author">- Sophie M.</div>
+                    </div>
+
+                    <div class="testimonial">
+                        <p>"Exactement ce dont j'avais besoin. Une guidance claire et un accompagnement sincère."</p>
+                        <div class="testimonial-author">- Anne L.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact & Rendez-vous -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Prendre Rendez-vous</h2>
+                <div class="form-section">
+                    <div class="success-message" id="successMessage">
+                        ✓ Merci ! Votre demande a été envoyée avec succès. Je vous recontacterai très bientôt.
+                    </div>
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Votre nom *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Votre email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Votre téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Date souhaitée *</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">Type de consultation *</label>
+                            <select id="type" name="type" required>
+                                <option value="">-- Sélectionnez --</option>
+                                <option value="guidance">Guidance Amoureuse</option>
+                                <option value="clarification">Clarification Sentimentale</option>
+                                <option value="tirage">Tirage Spécifique</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Votre question ou message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">Demander mon rendez-vous</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Maison de l'Oracle. Tous droits réservés.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Suivez-moi sur <a href="#" style="color: #e8c5d8; text-decoration: none;">Facebook</a></p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                date: document.getElementById('date').value,
+                type: document.getElementById('type').value,
+                message: document.getElementById('message').value
+            };
+
+            // Afficher le message de succès
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+
+            // Réinitialiser le formulaire
+            document.getElementById('contactForm').reset();
+
+            // Masquer le message après 5 secondes
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+
+            console.log('Données du rendez-vous:', formData);
+        }
+
+        // Lissage du scroll pour les liens d'ancre
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
